@@ -1,5 +1,17 @@
 @import "normalyze.scss";
 
+// === Variables ===
+$sm:576px;
+$md:768px;
+$lg:992px;
+$xl:1200px;
+
+$sm-max:767px;
+$md-max:991px;
+$lg-max:1199px;
+// === / Variables ===
+
+// === Common ===
 * {
 	box-sizing: border-box;
 	outline: none;
@@ -16,6 +28,8 @@ body {
 	font-family: 'Lato', sans-serif;
 	background-color: #F2F2F2;
 }
+
+
 
 .on-button {
 	padding: 17px 50px;
@@ -68,19 +82,20 @@ body {
 		color: #000;
 	}
 }
-
-// input::placeholder{
-// 	position: relative;
-// 	z-index: 20;
-// 	color: red;
-
-// }
+// === / Common ===
 
 
-.section-outer {}
+.section-outer {
+	@media (max-width:$lg){
+		padding-right: 20px;
+		padding-left: 20px;
+		margin-bottom: 40px
+	}
+	
+}
 
 .section-inner {
-	width: 1180px;
+	max-width: 1180px;
 	margin: 0 auto;
 }
 
@@ -89,7 +104,14 @@ body {
 	position: relative;
 	background: url(../img/Bitmap.png) center / cover no-repeat;
 	color: #fff;
-	margin-bottom: 100px;
+
+
+	@media (min-width:$md-max){
+		margin-bottom: 100px;
+	}
+	@media (max-width:$lg){
+		margin-bottom: 20px;
+	}
 
 	.section-inner {
 		height: 100vh;
@@ -157,22 +179,35 @@ body {
 
 		&__form {
 			display: flex;
+			@media (max-width:$md){
+				flex-direction:column;
+			}
 
 			&-input {
 				display: flex;
 				flex: 1;
+				@media (max-width:$md){
+					margin-bottom: 20px;
+				}
 
 				input {
-					width: 100%;
+					
 					padding: 17px 20px;
-					margin-right: 40px;
+					
 					background: rgba(255, 255, 255, 0.25);
 					color: #fff;
 					border: none;
 					border-radius: 4px;
 					font-size: 16px;
 					transition: all 0.2s ease-in;
-
+					@media (min-width:$sm-max){
+						margin-right: 40px;
+						width: 100%;
+					}
+					@media (max-width:$md){
+						width: 100%;
+						margin-right: 0px;
+					}
 					&::placeholder {
 						color: #fff;
 					}
@@ -185,7 +220,16 @@ body {
 				}
 			}
 
-			&-btn {}
+			&-btn {
+				
+			}
+			.on-button{
+				@media (max-width:$md){
+					width: 100%;
+					
+				}
+			}
+
 		}
 	}
 }
@@ -194,23 +238,46 @@ body {
 
 // === promo ===
 .section-promo {
-	margin-bottom: 132px;
-
+	
+	@media (min-width: $md-max){
+		margin-bottom: 132px;
+	}
+	@media (max-width:$md){
+		margin-bottom: 40px;
+	}
 	.section-inner {
 		display: flex;
 		justify-content: center;
+		@media (max-width:$lg){
+			flex-direction: column;
+		}
 	}
 
 	.section-promo-1 {
 		flex-basis: 50%;
-		padding-right: 100px;
+		
+		@media (min-width: $md-max){
+			padding-right: 100px;
+		}
+
+		@media (max-width:$lg){
+	padding: 20px;
+	
+		}
 
 		.title {
 			font-weight: bold;
 			font-size: 30px;
 			line-height: 51px;
 			color: #414141;
-			margin-bottom: 57px;
+			
+			@media (min-width: $md-max){
+				margin-bottom: 57px;
+			}
+	
+			@media (max-width:$lg){
+				margin-bottom: 20px;
+			}
 		}
 
 		.subtitle {
@@ -231,6 +298,12 @@ body {
 
 	.section-promo-2 {
 		display: flex;
+		@media (max-width:$lg){
+			order: -1;
+			margin-top: 10px;
+			margin-bottom: 10px;
+			justify-content: center;
+		}
 
 		img {
 			width: 90%;
@@ -247,12 +320,28 @@ body {
 	.section-promo-3 {
 
 		display: flex;
-		width: 1180px;
+		max-width: 1180px;
 		margin: 0 auto;
-		margin-top: 100px;
-		padding-top: 60px;
+		
 		border-top: 1px solid #E2E2E2;
+		@media (min-width:$sm-max){
+			// margin-right: 40px;
+			// width: 100%;
+		}
+		@media (max-width:$md){
+			flex-direction: column;
+		}
 
+
+		@media (min-width: $md-max){
+			margin-top: 100px;
+		padding-top: 60px;
+		}
+
+		@media (max-width:$lg){
+			margin-top: 20px;
+		
+		}
 		&__item {
 			text-align: center;
 
@@ -273,13 +362,22 @@ body {
 				line-height: 28px;
 				color: #6c6c6c;
 				margin-bottom: 30px;
+				@media (max-width:$md){
+					padding: 10px 50px;
+				}
 			}
 		}
 	}
 }
 
 .section-promo-3__item+.section-promo-3__item {
-	padding-left: 40px;
+	@media (min-width:$sm-max){
+		padding-left: 40px;
+	}
+	@media (max-width:$md){
+		// flex-direction: column;
+	}
+	
 }
 
 // === / promo ===
@@ -287,15 +385,32 @@ body {
 // === founder ===
 .section-founder {
 	background-color: #f6fafd;
-	margin-bottom: 120px;
+	
+	@media (min-width: $md-max){
+		margin-bottom: 120px;
+	}
+
+	@media (max-width:$lg){
+		margin-bottom: 40px;
+	}
 
 	.section-inner {
 		display: flex;
+		@media (min-width: $md-max){
+			// padding: 0 200px
+		}
+		@media (max-width:$lg){
+			flex-direction: column;
+		}
 	}
 
 	&__img {
 		align-self: flex-end;
 		padding-top: 30px;
+		@media (max-width:$lg){
+			align-self: flex-start;
+			order: +1;
+		}
 	}
 
 	&__content {
@@ -308,6 +423,7 @@ body {
 			line-height: 40px;
 			color: #414141;
 			padding-bottom: 30px;
+			
 		}
 
 		.name {
@@ -315,23 +431,43 @@ body {
 			font-size: 24px;
 			line-height: 29px;
 			color: #414141;
+			@media (max-width:$lg){
+				text-align: right;
+			}
 		}
 
 		.desc {
 			font-size: 20px;
 			line-height: 24px;
 			color: #414141;
+			@media (max-width:$lg){
+				text-align: right;
+			}
 		}
 	}
 }
 
 // === / founder ===
-
+// === plans ===
 .section-plans {
-	margin-bottom: 150px;
+	
+	@media (min-width: $md-max){
+		margin-bottom: 150px;
+	}
+
+	@media (max-width:$lg){
+		margin-bottom: 40px;
+	}
 
 	.section-inner {
-		padding: 0 200px;
+		
+		@media (min-width: $md-max){
+			padding: 0 200px;
+		}
+
+		@media (max-width:$lg){
+			padding: 0 40px;
+		}
 
 		.title {
 			font-weight: bold;
@@ -349,11 +485,23 @@ body {
 			line-height: 28px;
 			text-align: center;
 			color: #6c6c6c;
-			margin-bottom: 100px;
+			
+			@media (min-width: $md-max){
+				margin-bottom: 100px;
+			}
+	
+			@media (max-width:$lg){
+				margin-bottom: 20px;
+			}
+			
 		}
 
 		.pay {
 			display: flex;
+			
+			@media (max-width:$lg){
+				flex-direction: column;
+			}
 
 
 			.free {
@@ -392,7 +540,11 @@ body {
 					}
 				}
 
-				.text {}
+				.text {
+					@media (max-width:$lg){
+						padding: 0 100px;
+					}
+				}
 
 				.btn {}
 
@@ -441,12 +593,22 @@ body {
 		}
 	}
 }
+// === /plans ===
 
+// === free ===
 .section-free {
 	text-align: center;
-	padding: 120px 0;
+	
 	background: linear-gradient(90deg, #FE985B 2.77%, #FE4FA7 100%);
+	
+	@media (min-width:$md-max){
+		padding: 120px 0;
+	}
 
+	@media (max-width:$lg){
+		padding: 20px 0;
+
+	}
 	.section-inner {
 		.title {
 			font-weight: bold;
@@ -458,12 +620,23 @@ body {
 		}
 
 		.text {
-			padding: 0 320px;
+			
 			font-size: 20px;
 			line-height: 30px;
 			text-align: center;
 			color: #FFFFFF;
 			margin-bottom: 30px;
+
+			@media (min-width:$md-max){
+				padding: 0 320px;
+			}
+			@media (max-width:$lg){
+				padding: 20px 50px;
+	
+			}
+			@media (min-width:$sm){
+				padding: 10px 10px;
+			}
 		}
 
 		.button {
@@ -483,7 +656,11 @@ body {
 }
 
 .section-footer {
-	padding-top: 85px;
+	
+	@media(min-width:$md){
+		padding-top: 85px;
+	}
+
 
 	.section-inner {
 		.title {
@@ -499,35 +676,86 @@ body {
 			margin-bottom: 80px;
 
 			&__list {
-				display: flex;
-				justify-content: space-between;
-				padding: 0 200px;
+				
+				@media (min-width: $md-max){
+					padding: 0 200px
+				}
+				@media (max-width:$lg){
+					padding: 0 40px
+				}
+
+				
+				@media (min-width:$sm-max){
+					display: flex;
+					justify-content: space-between;
+					
+				}
 			}
 
 			&__link {
 				transition: all .2s ease-in;
-				&:hover{
+
+				&:hover {
 					color: #fe50a6;
 				}
+
 				&:first-child {
-					padding-left: 0;
+					@media (min-width:$sm-max){
+						padding-left: 0px;
+					}
+			
 				}
+
 				font-weight: bold;
 				font-size: 14px;
 				line-height: 20px;
 				text-align: center;
 				text-transform: uppercase;
 				color: #464646;
-				padding-left: 80px;
+
+				
+				@media (max-width:$md){
+					padding-top: 20px;
+				}
 			}
 		}
 
 		.footer-copyright {
-			margin-bottom: 100px;
+			
+			@media (min-width: $md-max){
+				margin-bottom: 100px;
+			}
+			@media (max-width:$md){
+				margin-bottom: 20px;
+			}
+
 			.footer-copyright__list {
 				display: flex;
 				justify-content: space-between;
-				padding: 0 200px;
+			
+				// @media (min-width: $md-max){
+				// 	padding: 0 200px
+				// }
+			
+				// @media (max-width:$lg){
+				// 	padding-bottom: 20px;
+				// 	// padding: 0 40px
+				// }
+
+				@media (min-width: $md-max){
+					padding: 0 200px
+				}
+				@media (max-width:$md){
+					text-align: center;
+					flex-direction:column;
+				}
+
+				
+				@media (min-width:$sm-max){
+					display: flex;
+					justify-content: space-between;
+					
+				}
 
 				.footer-copyright__link {
 					font-weight: normal;
@@ -535,6 +763,10 @@ body {
 					line-height: 17px;
 					text-transform: capitalize;
 					color: #464646;
+					@media (max-width:$md){
+						margin-bottom: 20px;
+						
+					}
 				}
 			}
 		}
